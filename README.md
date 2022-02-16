@@ -1,1 +1,1 @@
-# creative_embedded_sys
+# Creative Embedded Systems Project for COMS3930
