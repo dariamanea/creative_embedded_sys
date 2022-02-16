@@ -1,17 +1,6 @@
 /*  
- Test the tft.print() viz embedded tft.write() function
-
- This sketch used font 2, 4, 7
- 
- Make sure all the display driver and pin connections are correct by
- editing the User_Setup.h file in the TFT_eSPI library folder.
-
- Note that yield() or delay(0) must be called in long duration for/while
- loops to stop the ESP8266 watchdog triggering.
-
- #########################################################################
- ###### DON'T FORGET TO UPDATE THE User_Setup.h FILE IN THE LIBRARY ######
- #########################################################################
+Creative Embedded Systems - Project 1
+Daria Manea
  */
 
 
@@ -21,6 +10,7 @@
 TFT_eSPI tft = TFT_eSPI();  // Invoke library, pins defined in User_Setup.h
 
 #define TFT_GREY 0x5AEB // New colour
+// List of problems to choose from 
 char *problems[]={" a nose bruise ", " a hairy carrot ", " dry skin ", " spilling coffee on myself "};
 long p;
 
@@ -33,7 +23,7 @@ void loop() {
   p = random(sizeof(problems)/sizeof(char*));
   
   
-  // Fill screen with grey so we can see the effect of printing with and without 
+  // Fill screen with black so we can see the effect of printing with and without 
   // a background colour defined
   tft.fillScreen(TFT_BLACK);
   
@@ -41,9 +31,9 @@ void loop() {
   // (cursor will move to next line automatically during printing with 'tft.println'
   //  or stay on the line is there is room for the text with tft.print)
   tft.setCursor(0, 0, 2);
-  // Set the font colour to be white with a black background, set text size multiplier to 1
+  // Set the font colour to be yellow with a black background, set text size multiplier to 2
   tft.setTextColor(TFT_YELLOW,TFT_BLACK);  tft.setTextSize(2);
-  // We can now plot text on screen using the "print" class
+  //  plot text on screen using the "print" class
   int number_of_problems = random(100);
   char problem[] = "arduino documentation";
   tft.print("I got ");  
