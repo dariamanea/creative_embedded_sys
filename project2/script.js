@@ -1,34 +1,24 @@
 // Use your menus or right-click / control-click and choose "Inspect" > "Console"
 console.log("Hello 🌎");
 
-function fetchStream() {
-    const reader = stream.getReader();
-    let charsReceived = 0;
+
+// Audio file 
+var audio = new Audio('under_stars.mp3');
+let ellipseSize = 60;
+
+function setup() {
+    createCanvas(1200, 1200);
+  }
   
-    // read() returns a promise that resolves
-    // when a value has been received
-    reader.read().then(function processText({ done, value }) {
-      // Result objects contain two properties:
-      // done  - true if the stream has already given you all its data.
-      // value - some data. Always undefined when done is true.
-      if (done) {
-        console.log("Stream complete");
-        para.textContent = value;
-        return;
-      }
-  
-      // value for fetch streams is a Uint8Array
-      charsReceived += value.length;
-      const chunk = value;
-      let listItem = document.createElement('li');
-      listItem.textContent = 'Received ' + charsReceived + ' characters so far. Current chunk = ' + chunk;
-      list2.appendChild(listItem);
-  
-      result += chunk;
-  
-      // Read some more, and call this function again
-      return reader.read().then(processText);
-    });
+  function draw(x, y) {
+    
+    if (mouseIsPressed) {
+      fill(0);
+    } else {
+      fill(255);
+    }
+    // 80 and 80 for elipseSize
+    ellipse(mouseX, mouseY, ellipseSize, ellipseSize);
   }
 
 if ("serial" in navigator) {
@@ -42,57 +32,50 @@ if ("serial" in navigator) {
             bufferSize : 2048
         });
 
-        // const textDecoder = new TextDecoderStream();
-        // const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
+        const textDecoder = new TextDecoderStream();
+        const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
+        const reader = textDecoder.readable.getReader();
 
-        // while (port.readable) {
-        //     const reader = textDecoder.readable.getReader();
-          
-        //     try {
-        //       while (true) {
-        //         const { value, done } = await reader.read();
-        //         if (done) {
-        //           // Allow the serial port to be closed later.
-        //           reader.releaseLock();
-        //           break;
-        //         }
-        //         if (value) {
-        //           console.log(value);
-        //         }
-        //       }
-        //     } catch (error) {
-        //       // TODO: Handle non-fatal read error.
-        //     }
-        //   }
-        // With transform streams.
+        // Listen to data coming from the serial device.
+        while (true) {
+        const { value, done } = await reader.read();
+        if (done) {
+            reader.releaseLock();
+            break;
+        }
+        // value is a string.
 
-const textDecoder = new TextDecoderStream();
-const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
-const reader = textDecoder.readable.getReader();
+        console.log(value);
 
-// Listen to data coming from the serial device.
-while (true) {
-  const { value, done } = await reader.read();
-  if (done) {
-    reader.releaseLock();
-    break;
-  }
-  // value is a string.
-  console.log(value);
-}
 
-const textEncoder = new TextEncoderStream();
-const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
+        if( String(value).trim() == "b0"){
+            // audio.play();
+            document.body.style.background = "pink"; 
+        }
 
-reader.cancel();
-await readableStreamClosed.catch(() => { /* Ignore the error */ });
+        if( String(value).trim() == "b1"){
+            // audio.play();
+            document.body.style.background = "black"; 
+        }
 
-writer.close();
-await writableStreamClosed;
+        // potentiometers go from 0 to 4095
 
-await port.close();
+        if( String(value).trim() == "x"){
+        }
 
-       
+        if( String(value).trim() == "y"){
+            
+        }
+
+        if( String(value.substring(0,1)).trim() == "p"){
+            console.log("i received p value")
+            console.log(value)
+            ellipseSize = (parseInt(String(value.substring(1)).trim())/4095)*100
+            console.log(ellipseSize)
+        }
+
+
+        }
     });
 
 }
