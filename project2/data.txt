@@ -1,0 +1,5 @@
+{"potentiometer":1850,"vrx":[1894],"vry":[null,1872],"sw":[null,1]}1847
+1
+1872
+1893
+{"potentiometer":1855,"vrx":[1891],"vry":[null,1872],"sw":[null,1]}1847
