@@ -27,13 +27,13 @@ if ("serial" in navigator) {
           // value is a string.
           
         //   parsedVal = parseInt(value);
-          console.log(String(value))
-          if (!isNaN(parsedVal)) {
-            console.log(parsedVal)
-            // counterVal += parseInt(value);
-            //add a tiny bit extra to the time to make Tone.js happy
-            // synth.triggerAttackRelease((counterVal % 800) + 200, "8n", Tone.now()+counterVal/8000);
-          }
+          console.log(value)
+        //   if (!isNaN(parsedVal)) {
+        //     console.log(parsedVal)
+        //     // counterVal += parseInt(value);
+        //     //add a tiny bit extra to the time to make Tone.js happy
+        //     // synth.triggerAttackRelease((counterVal % 800) + 200, "8n", Tone.now()+counterVal/8000);
+        //   }
         }
     });
 
