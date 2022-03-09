@@ -43,5 +43,5 @@ void loop(){
 //    potentiometer VRX
     Serial.print("x");
     Serial.println(analogRead(26));
-    delay(200); 
+    delay(10); 
 }
