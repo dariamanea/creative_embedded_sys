@@ -9,4 +9,5 @@ The goal of this project was to incorporate hardware as controllers into the cre
 
  For the hardware part of this project, I used solderless wires to connect the joystick and potentiometer and I used soldering to connect the button to the ESP32's header. For the enclosing, I used a cardboard box in which I cut holes which allowed the three pieces of hardware and the USBC connector to stick out. 
 
- 
+ ![Screen Shot 2022-03-09 at 9 16 42 PM](https://user-images.githubusercontent.com/44726789/157576768-2820834f-b31c-4030-a310-ad869dba5998.png)
+<img width="1440" alt="Screen Shot 2022-03-09 at 9 16 35 PM" src="https://user-images.githubusercontent.com/44726789/157576781-20bd8d3a-fc03-4d1c-b329-3add774a99bd.png">
