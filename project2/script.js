@@ -19,8 +19,6 @@ function setup() {
     } else {
       fill(255);
     }
-    // 80 and 80 for elipseSize
-    // ellipse(mouseX, mouseY, ellipseSize, ellipseSize);
     ellipse(x, y, ellipseSize, ellipseSize);
   }
 
@@ -70,7 +68,6 @@ if ("serial" in navigator) {
         if( String(value.substring(0,1)).trim() == "p"){
             ellipseSize = (parseInt(String(value.substring(1)).trim())/4095)*100
         }
-
 
         }
     });

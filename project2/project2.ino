@@ -30,10 +30,6 @@ void loop(){
   Serial.println(analogRead(12));
   delay(10); 
   
-//// SW
-//    Serial.print("sw");
-//    Serial.println(digitalRead(25));
-//    delay(10); 
  
 // potentiometer VRY 
       Serial.print("y");
