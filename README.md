@@ -1,1 +1,1 @@
-# Creative Embedded Systems Project for COMS3930
+# Creative Embedded Systems Projects for COMS3930
