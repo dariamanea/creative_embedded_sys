@@ -24,7 +24,9 @@ void setup() {
 
   //  LEDs
   strip.begin();
-  strip.setBrightness(10);
+//  strip.setBrightness(10);
+//Set up the baselevel brightness
+  strip.setBrightness(2);
 }
 void loop() {
   if (close_enough == true){
@@ -32,12 +34,9 @@ void loop() {
       strip.setLedColorData(i, 255, 255, 255);
       strip.show();
     }
-//  Serial.println(close_enough == true);
-//  strip.setLedColorData(1, 255, 255, 255);
-//  strip.show();
   }
   else {
-      strip.setLedColorData(2, 255, 255, 255);
+//      strip.setLedColorData(2, 255, 255, 255);
       strip.show();
     }
   // Clears the trigPin condition
