@@ -2,9 +2,11 @@
 #define LEDS_COUNT 144 // The number of led
 #define LEDS_PIN 2 // define the pin connected to the Freenove 8 led strip
 #define CHANNEL 0 // RMT channel
+
+
 Freenove_ESP32_WS2812 strip = Freenove_ESP32_WS2812(LEDS_COUNT, LEDS_PIN, CHANNEL, TYPE_GRB);
 u8 m_color[5][3] = { {255, 0, 0}, {0, 255, 0}, {0, 0, 255}, {255, 255, 255}, {0, 0, 0} };
-bool close_enough = false; 
+bool close_enough = false;
 
 //Distance sensor pins
 #define echoPin 13 // attach pin D2 Arduino to pin Echo of HC-SR04
@@ -24,21 +26,19 @@ void setup() {
 
   //  LEDs
   strip.begin();
-//  strip.setBrightness(10);
-//Set up the baselevel brightness
+  //Set up the baselevel brightness
   strip.setBrightness(2);
 }
 void loop() {
-  if (close_enough == true){
-      for (int i = 0; i < LEDS_COUNT; i++) {
+  if (close_enough == true) {
+    for (int i = 0; i < LEDS_COUNT; i++) {
       strip.setLedColorData(i, 255, 255, 255);
       strip.show();
     }
   }
   else {
-//      strip.setLedColorData(2, 255, 255, 255);
-      strip.show();
-    }
+    strip.show();
+  }
   // Clears the trigPin condition
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
@@ -54,10 +54,10 @@ void loop() {
   Serial.print("Distance: ");
   Serial.print(distance);
   Serial.println(" cm");
-  if (distance < 100) {
-   close_enough = true; 
+  if (distance < 50) {
+    close_enough = true;
   }
   else {
-      close_enough = false;  
-    }
+    close_enough = false;
+  }
 }
