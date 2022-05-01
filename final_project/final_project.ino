@@ -54,7 +54,7 @@ void loop() {
   Serial.print("Distance: ");
   Serial.print(distance);
   Serial.println(" cm");
-  if (distance < 100) {
+  if (distance < 50) {
    close_enough = true; 
   }
   else {
